@@ -1,0 +1,39 @@
+{
+  "name": "premailer",
+  "version": "1.0.0",
+  "description": "Premailer is a JavaScript library which reads a HTML document, creates a tree data structure to represent the DOM and \"inlines\" any extracted CSS rules found in the file.  © 2020 Maria Koudounakou • Code on < https://github.com/mkoudounakou/premailer >",
+  "type": "module",
+  "main": "premailer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node premailer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkoudounakou/premailer.git"
+  },
+  "keywords": [
+    "Premailer",
+    "Inline",
+    "CSS",
+    "Outlook",
+    "Compatible",
+    "Email",
+    "HTML",
+    "File",
+    "Conversion",
+    "Mail",
+    "Styles",
+    "Inliner"
+  ],
+  "author": "Maria Koudounakou",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/mkoudounakou/premailer/issues"
+  },
+  "homepage": "https://github.com/mkoudounakou/premailer#readme",
+  "dependencies": {
+    "node": "^15.4.0"
+  },
+  "devDependencies": {}
+}
