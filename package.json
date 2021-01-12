@@ -2,7 +2,6 @@
   "name": "premailer",
   "version": "1.0.0",
   "description": "Premailer is a JavaScript library which reads a HTML document, creates a tree data structure to represent the DOM and \"inlines\" any extracted CSS rules found in the file.  © 2020 Maria Koudounakou • Code on < https://github.com/mkoudounakou/premailer >",
-  "type": "module",
   "main": "premailer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

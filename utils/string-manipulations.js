@@ -5,7 +5,7 @@
 
 
 // A formatting function I use to convert special chars to their plaintext equivalents, which is a useful facility for my .createUI() function
-export function convertStrTo(str,returnType, specifiedInputType) {
+module.exports.convertStrTo = function(str,returnType, specifiedInputType) {
 	let res = "";
 
   /* Array of 'HTML Reserve Chars' listed on 'w3schools'. Those found in my premailer test data were: '&lt;', '&gt;', '\&quot;', '&amp;nbsp;' */
@@ -56,15 +56,20 @@ export function convertStrTo(str,returnType, specifiedInputType) {
 
 // remember, I'm dealing with the console automatically converting 'result' html reserve chars to their 'entityName' form.
 // NO BENEFIT in this environment, but will be where automatic plaintext handling isnt default practice.. (for security)
-export const openTag = convertStrTo('<', 'result');
-export const closeTag = convertStrTo('>', 'result');
-export const dblQuote = convertStrTo('"', 'result');
-export const openCmt = convertStrTo("<!--", 'result');
-export const closeCmt = convertStrTo("-->", 'result');
+const openTag = module.exports.convertStrTo('<', 'result');
+const closeTag = module.exports.convertStrTo('>', 'result');
+const dblQuote = module.exports.convertStrTo('"', 'result');
+const openCmt = module.exports.convertStrTo("<!--", 'result');
+const closeCmt = module.exports.convertStrTo("-->", 'result');
+module.exports.openTag = openTag;
+module.exports.closeTag = closeTag;
+module.exports.dblQuote = dblQuote;
+module.exports.openCmt = openCmt;
+module.exports.closeCmt = closeCmt;
 
 
 // A formatting function I use for "prettifying" <code> sections in 'htmlLogResult' outputs from my premailer functions
-export function leftAlignMyContent(string_or_array_of_string_values, retainIndent, ignoreFirstLine, addIndentPostProcessing) {
+module.exports.leftAlignMyContent = function(string_or_array_of_string_values, retainIndent, ignoreFirstLine, addIndentPostProcessing) {
   let res = [];
   let tmpArr = [];
   let indent = 0;
@@ -148,16 +153,17 @@ export function leftAlignMyContent(string_or_array_of_string_values, retainInden
     tags that close then open without space between), and lastly conforms
     self-closing tags either to html5 standard or for XHTML compatability.	 */
 
-export function stripHtmlComments(s) { return s.split(closeCmt).join(openCmt).split(openCmt).filter((e,i)=>i%2===0).join(''); };
+module.exports.stripHtmlComments = function(s) { return s.split(closeCmt).join(openCmt).split(openCmt).filter((e,i)=>i%2===0).join(''); };
 
-export function addSpaceToCloseTag(s) { return s.split(closeTag).join(closeTag+' '); };
+module.exports.addSpaceToCloseTag = function(s) { return s.split(closeTag).join(closeTag+' '); };
 
 // list of valid self-close tags for html5
-export const arrSelfCloseTags = ["area","base","br","col","command","embed","hr","img","input",
-                                "keygen","link","menuitem","meta","param","source","track","wbr"];
+const arrSelfCloseTags = ["area","base","br","col","command","embed","hr","img","input",
+                          "keygen","link","menuitem","meta","param","source","track","wbr"];
+module.exports.arrSelfCloseTags = arrSelfCloseTags;
 
 // adds conformity to self-closing tags, so they're all in the format: <br> | NOT: <br></br> OR <br />
-export function conformSelfCloseTags(s, makeXHTMLcompatible) {
+module.exports.conformSelfCloseTags = function(s, makeXHTMLcompatible) {
   let res = "";
   let arrSplitString = s.split(closeTag).join(openTag).split(openTag);
   const findTagType = (s) => { return s.split('/').join('').split(' ')[0]; };

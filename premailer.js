@@ -1,10 +1,10 @@
-/* PREMAILER MAIN MODULE */
+/* PREMAILER MAIN */
 
 // dependencies
-import * as prep from './premailer-process/prepare-data.js';
-import * as exec from './premailer-process/execute-data.js';
-import * as strLib from './utils/string-manipulations.js';
-import fs from 'fs';
+const prep = require('./premailer-process/prepare-data.js');
+const exec = require('./premailer-process/execute-data.js');
+const strLib = require('./utils/string-manipulations.js');
+const fs = require('fs');
 
 // This could be something to add to the UI as a form input when it comes to production.
 class Options {
@@ -19,7 +19,7 @@ class Options {
   set makeLogFiles(x) { this._makeLogFiles = x; }
 }
 
-export default class Premailer {
+module.exports = class Premailer {
   constructor(dirInputFile, dirOutputFile, premailerOptions) {
     this._dirInputFile = 			(arguments.length >= 1) ? dirInputFile 			              : "" ;
     this._dirOutputFile = 		(arguments.length >= 2) ? dirOutputFile 		              : "" ;

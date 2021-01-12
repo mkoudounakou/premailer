@@ -2,7 +2,7 @@
 /* PREMAILER FUNCTIONS - 1. FIND STYLE/BODY - 2. FIND INLINABLE STYLES - 3. INLINE CSS VIA NODE LIST */
 
 // dependencies
-import * as strLib from '.././utils/string-manipulations.js';
+const strLib = require('.././utils/string-manipulations.js');
 const openTag = strLib.openTag;
 const closeTag = strLib.closeTag;
 const dblQuote = strLib.dblQuote;
@@ -11,7 +11,7 @@ const closeCmt = strLib.closeCmt;
 const arrSelfCloseTags = strLib.arrSelfCloseTags;
 
 // STEP 3: now to add the styles data to DOM elements affected by their selectors
-export function inliner(emailHtmlBody, StylesSelectors, stylesData, options) {
+module.exports.inliner = function(emailHtmlBody, StylesSelectors, stylesData, options) {
   let newEmailHtmlBody = "";
   let treeCreationLog = "";
 

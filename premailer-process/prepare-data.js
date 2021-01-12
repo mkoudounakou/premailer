@@ -2,7 +2,7 @@
 /* PREMAILER FUNCTIONS - 1. FIND STYLE/BODY - 2. FIND INLINABLE STYLES - 3. INLINE CSS VIA NODE LIST */
 
 // dependencies
-import * as strLib from '.././utils/string-manipulations.js';
+const strLib = require('.././utils/string-manipulations.js');
 const openTag = strLib.openTag;
 const closeTag = strLib.closeTag;
 const dblQuote = strLib.dblQuote;
@@ -11,7 +11,7 @@ const closeCmt = strLib.closeCmt;
 const arrSelfCloseTags = strLib.arrSelfCloseTags;
 
 // STEP 1: isolate "style" and "body" from email html
-export function findStylesAndBody(strEmailHtml) {
+module.exports.findStylesAndBody = function(strEmailHtml) {
   const eStyle = strEmailHtml.split('<style type="text/css">')[1].split('</style>')[0];
   const eBody = strEmailHtml.split('<body>')[1].split('</body>')[0];
   const res = {
@@ -22,7 +22,7 @@ export function findStylesAndBody(strEmailHtml) {
 };
 
 // STEP 2: create list of style tags that can be inlined, isolating any media queries (as they can't be inlined)
-export function findInlinableStyles(strStyles) {
+module.exports.findInlinableStyles = function(strStyles) {
 
   // part I: split styles just before each "@media" query, if they are present
   const splitWithoutRemovingDelimFromStrings = (str, delim, prependOrAppend) => {
